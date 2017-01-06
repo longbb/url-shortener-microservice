@@ -4,7 +4,7 @@ var mongo = require("mongodb");
 
 var app = express();
 app.use(express.static(__dirname + '/views'));
-mongo.MongoClient.connect("mongodb://localhost:27017/url-shortener-microservice", function(err, db) {
+mongo.MongoClient.connect(process.env.MONGOLAB_URI || "mongodb://localhost:27017/url-shortener", function(err, db) {
 
   if (err) {
     throw new Error('Database failed to connect!');
